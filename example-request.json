@@ -1,0 +1,95 @@
+{
+  "input": {
+    "workflow": {
+      "1": {
+        "inputs": {
+          "filename": "seedvr2_ema_7b_sharp-Q4_K_M.gguf"
+        },
+        "class_type": "SeedVR2LoadDiTModel",
+        "_meta": {
+          "title": "SeedVR2LoadDiTModel"
+        }
+      },
+      "2": {
+        "inputs": {
+          "filename": "ema_vae_fp16.safetensors"
+        },
+        "class_type": "SeedVR2LoadVAEModel",
+        "_meta": {
+          "title": "SeedVR2LoadVAEModel"
+        }
+      },
+      "3": {
+        "inputs": {
+          "image": "58cbd6de369e2439b23977c4c2f026b6604073394722865afe3944dcb8237ff0.png"
+        },
+        "class_type": "LoadImage",
+        "_meta": {
+          "title": "LoadImage"
+        }
+      },
+      "4": {
+        "inputs": {
+          "value": 905792223,
+          "image": [
+            "3",
+            0
+          ],
+          "dit": [
+            "1",
+            0
+          ],
+          "vae": [
+            "2",
+            0
+          ]
+        },
+        "class_type": "SeedVR2VideoUpscaler",
+        "_meta": {
+          "title": "SeedVR2VideoUpscaler"
+        }
+      },
+      "5": {
+        "inputs": {
+          "filename_prefix": "upscale/seedvr2_",
+          "images": [
+            "4",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      },
+      "6": {
+        "inputs": {
+          "value": [
+            {
+              "name": "A",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_rlfbl_00005_.png&type=temp&subfolder=&rand=0.9380423772157087"
+            },
+            {
+              "name": "B",
+              "selected": true,
+              "url": "/api/view?filename=rgthree.compare._temp_rlfbl_00006_.png&type=temp&subfolder=&rand=0.8900004187018836"
+            }
+          ],
+          "image_a": [
+            "3",
+            0
+          ],
+          "image_b": [
+            "4",
+            0
+          ]
+        },
+        "class_type": "Image Comparer (rgthree)",
+        "_meta": {
+          "title": "Image Comparer (rgthree)"
+        }
+      }
+    }
+  }
+}
